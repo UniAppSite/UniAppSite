@@ -47,7 +47,7 @@
         const docRef=doc(db, "users", user.uid);
         setDoc(docRef,userData)
         .then(()=>{
-            window.location.href='index.html';
+            window.location.href='https://uniapp.site/Chat/login.html';
         })
         .catch((error)=>{
             console.error("error writing document", error);
