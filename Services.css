@@ -1,24 +1,22 @@
-* {
+{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
-
 body {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     position: relative;
-
+    overflow: auto; /* Changed from hidden to auto */
     color: white;
 }
-
 .background {
-    position: absolute;
+    position: fixed; /* Changed from absolute to fixed */
     top: 0;
     left: 0;
     width: 100%;
@@ -29,9 +27,8 @@ body {
     filter: blur(10px);
     z-index: -1;
 }
-
 .overlay {
-    position: absolute;
+    position: fixed; /* Changed from absolute to fixed */
     top: 0;
     left: 0;
     width: 100%;
@@ -39,28 +36,25 @@ body {
     background-color: rgba(0, 0, 0, 0.5);
     z-index: -1;
 }
-
 .content {
     width: 90%;
     max-width: 500px;
     padding: 20px;
     z-index: 1;
+    margin: 50px 0; /* Added margin for better spacing */
 }
-
 .logo {
     width: 350px;
     height: 350px;
     margin-bottom: 30px;
     filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
 }
-
 h1 {
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 15px;
     letter-spacing: -0.5px;
 }
-
 p {
     font-size: 1.1rem;
     line-height: 1.5;
@@ -68,7 +62,6 @@ p {
     font-weight: 500;
     opacity: 0.9;
 }
-
 .ios-button {
     background-color: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(20px);
@@ -87,13 +80,11 @@ p {
     transition: all 0.3s ease;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
-
 .ios-button:hover {
     background-color: rgba(255, 255, 255, 0.3);
     transform: translateY(-2px);
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
 }
-
 .footer {
     position: fixed;
     bottom: 0;
@@ -107,24 +98,20 @@ p {
     z-index: 10;
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
 }
-
 .footer p {
     margin: 0;
     font-size: 0.9rem;
     font-weight: 400;
     letter-spacing: 0.5px;
 }
-
 @media (max-width: 768px) {
     .logo {
         width: 120px;
         height: 120px;
     }
-
     h1 {
         font-size: 2rem;
     }
-
     p {
         font-size: 1rem;
     }
