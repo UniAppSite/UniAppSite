@@ -13,7 +13,7 @@ body {
     align-items: center;
     text-align: center;
     position: relative;
-    overflow: scroll; /* Explicitly enable vertical scrolling */
+    overflow: auto; /* Explicitly enable vertical scrolling */
     color: white;
     padding-bottom: 60px; /* Add padding at bottom to account for footer */
 }
@@ -48,6 +48,7 @@ html {
     padding: 20px;
     z-index: 1;
     margin: 20px 0; /* Add some margin to ensure content isn't cut off */
+    overflow: auto;
 }
 .logo {
     width: 350px;
