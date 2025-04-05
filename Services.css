@@ -12,7 +12,7 @@ body {
     align-items: center;
     text-align: center;
     position: relative;
-    overflow: auto; /* Changed from hidden to auto */
+    overflow: scroll; /* Changed from hidden to auto */
     color: white;
 }
 .background {
