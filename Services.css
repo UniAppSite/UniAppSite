@@ -13,7 +13,7 @@ body {
     align-items: center;
     text-align: center;
     position: relative;
-    overflow-y: scroll; /* Explicitly enable vertical scrolling */
+    overflow: scroll; /* Explicitly enable vertical scrolling */
     color: white;
     padding-bottom: 60px; /* Add padding at bottom to account for footer */
 }
