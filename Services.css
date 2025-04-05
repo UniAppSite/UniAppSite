@@ -5,6 +5,7 @@
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 body {
+    /* Remove fixed height to allow content to determine height */
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -12,11 +13,16 @@ body {
     align-items: center;
     text-align: center;
     position: relative;
-    overflow: scroll; /* Changed from hidden to auto */
+    overflow-y: scroll; /* Explicitly enable vertical scrolling */
     color: white;
+    padding-bottom: 60px; /* Add padding at bottom to account for footer */
+}
+html {
+    height: 100%;
+    overflow-y: scroll; /* Ensure html element also allows scrolling */
 }
 .background {
-    position: fixed; /* Changed from absolute to fixed */
+    position: fixed; /* Use fixed instead of absolute to keep background in view when scrolling */
     top: 0;
     left: 0;
     width: 100%;
@@ -28,7 +34,7 @@ body {
     z-index: -1;
 }
 .overlay {
-    position: fixed; /* Changed from absolute to fixed */
+    position: fixed; /* Use fixed instead of absolute */
     top: 0;
     left: 0;
     width: 100%;
@@ -41,7 +47,7 @@ body {
     max-width: 500px;
     padding: 20px;
     z-index: 1;
-    margin: 50px 0; /* Added margin for better spacing */
+    margin: 20px 0; /* Add some margin to ensure content isn't cut off */
 }
 .logo {
     width: 350px;
