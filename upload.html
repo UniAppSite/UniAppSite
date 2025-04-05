@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Image</title>
+    <link rel="stylesheet" href="upload.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Upload Your Image</h1>
+        <p>Logged in as: <span id="loggedUserFName"></span> (<span id="loggedUserEmail"></span>)</p>
+
+        <input type="text" id="socialUsername" placeholder="Enter your Instagram or social media username">
+        
+        <!-- Replace URL input with file input -->
+        <div class="file-upload">
+            <input type="file" id="imageFile" accept="image/jpeg, image/jpg, image/png">
+            <p id="fileName">No file selected,Click here to upload</p>
+        </div>
+        
+        <div class="preview-container" id="imagePreview" style="display: none;">
+            <img id="previewImage" src="" alt="Preview">
+        </div>
+        
+        <button id="uploadBtn">Upload</button>
+        <p id="statusMessage"></p>
+        
+        <button id="backToGallery" onclick="window.location.href='gallery.html'">Back to Gallery</button>
+        <button id="logout">Logout</button>
+    </div>
+
+    <script type="module" src="upload.js"></script>
+</body>
+</html>
