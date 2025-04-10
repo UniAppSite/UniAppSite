@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Users</title>
+    <link rel="stylesheet" href="SearchUsers.css">
+</head>
+<body>
+    <div class="background"></div>
+    <div class="overlay"></div>
+
+    <!-- Current user profile shortcut -->
+    <div class="current-user-shortcut" id="currentUserShortcut">
+        <div class="current-user-pic">
+            <img src="" alt="User Profile">
+        </div>
+        <span id="currentUserName">User</span>
+    </div>
+
+    <div class="content">
+        <h1>Find Users</h1>
+        
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search by name or email...">
+            <button id="searchBtn" class="ios-button search-button">Search</button>
+        </div>
+
+        <div class="user-list-container">
+            <div class="loader" id="loader" style="display: none;">
+                <div class="spinner"></div>
+            </div>
+            <div id="usersList" class="users-grid">
+                <!-- Users will be displayed here -->
+            </div>
+            <div id="noResults" class="no-results" style="display: none;">
+                <p>No users found</p>
+            </div>
+        </div>
+
+        <button id="backToProfile" class="ios-button" style="margin-top: 20px;">Back to Profile</button>
+    </div>
+
+    <!-- User Details Modal -->
+    <div id="userDetailsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeUserModal()">&times;</span>
+            <div class="user-details-container">
+                <div class="profile-pic modal-profile-pic">
+                    <img id="modalUserImage" src="" alt="User Profile">
+                </div>
+                <h2 id="modalUserName">User Name</h2>
+                <p><strong>Email:</strong> <span id="modalUserEmail">user@example.com</span></p>
+                <div class="about-me-container modal-about-me">
+                    <p><strong>About Me:</strong></p>
+                    <div class="about-me-text" id="modalAboutMe">Hello, I'm New Here</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>User Search</p>
+    </div>
+
+    <script type="module" src="SearchUsers.js"></script>
+</body>
+</html>
