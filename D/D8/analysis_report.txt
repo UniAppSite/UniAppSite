@@ -1,0 +1,61 @@
+======================================================================
+CSV DATA ANALYSIS REPORT - TWO OPTION SELECTIONS
+======================================================================
+
+Total Responses: 112
+
+----------------------------------------------------------------------
+BREAKDOWN BY NUMBER OF OPTIONS SELECTED:
+----------------------------------------------------------------------
+1 Option:        31 responses (27.68%)
+2 Options:       37 responses (33.04%)
+3 Options:       41 responses (36.61%)
+4 Options:        2 responses (1.79%)
+5+ Options:       1 responses (0.89%)
+
+======================================================================
+KEY FINDING: TWO-OPTION SELECTIONS
+======================================================================
+Count:      37 people selected exactly 2 options
+Percentage: 33.04% of all responses
+
+----------------------------------------------------------------------
+ALL TWO-OPTION RESPONSES:
+----------------------------------------------------------------------
+  1. Lack of awareness, Lack of accessibility for the test
+  2. Lack of awareness, Lack of accessibility for the test
+  3. Lack of awareness, High cost
+  4. Lack of awareness, High cost
+  5. Lack of awareness, High cost
+  6. Lack of awareness, High cost
+  7. Lack of awareness, Doctors incompetency
+  8. Lack of awareness, Lack of accessibility for the test
+  9. Lack of awareness, Lack of accessibility for the test
+ 10. Lack of awareness, Lack of accessibility for the test
+ 11. Lack of awareness, Lack of accessibility for the test
+ 12. Lack of awareness, Lack of accessibility for the test
+ 13. Lack of awareness, High cost
+ 14. Lack of awareness, Fear of results
+ 15. Lack of awareness, Lack of accessibility for the test
+ 16. Lack of awareness, High cost
+ 17. Lack of awareness, High cost
+ 18. Lack of awareness, High cost
+ 19. Lack of awareness, High cost
+ 20. Lack of awareness, High cost
+ 21. Lack of awareness, High cost
+ 22. Lack of awareness, High cost
+ 23. Lack of awareness, High cost
+ 24. Lack of awareness, High cost
+ 25. Lack of awareness, Fear of results
+ 26. Lack of awareness, High cost
+ 27. Lack of awareness, High cost
+ 28. Lack of awareness, High cost
+ 29. Lack of awareness, High cost
+ 30. High cost, Fear of results
+ 31. Lack of awareness, High cost
+ 32. Lack of awareness, High cost
+ 33. High cost, Fear of results
+ 34. Lack of awareness, Lack of accessibility for the test
+ 35. High cost, Lack of accessibility for the test
+ 36. Lack of awareness, Lack of accessibility for the test
+ 37. Lack of awareness, High cost
