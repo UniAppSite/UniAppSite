@@ -38,19 +38,20 @@ def organize_by_folder(png_files, root_dir):
         
         folder_index[folder_path].append({
             'filename': png_file.name,
-            'full_path': str(png_file),
+            'full_path': str(relative_path),  # Use relative path instead of absolute
             'relative_path': str(relative_path)
         })
     
     return folder_index
 
-def detect_and_handle_duplicates(folder_index, rename_mode='dry_run'):
+def detect_and_handle_duplicates(folder_index, rename_mode='dry_run', root_dir=None):
     """
     Detect duplicate filenames across folders and handle them.
     
     Args:
         folder_index: Dictionary of folders and their PNG files
         rename_mode: 'dry_run' (just report), 'rename' (actually rename files)
+        root_dir: Root directory for resolving paths when renaming
     
     Returns:
         Dictionary with duplicate information and rename operations
@@ -70,7 +71,6 @@ def detect_and_handle_duplicates(folder_index, rename_mode='dry_run'):
                   if len(locations) > 1}
     
     rename_operations = []
-    
     if rename_mode == 'rename' and duplicates:
         print("\n🔄 RENAMING DUPLICATE FILES...")
         
@@ -81,8 +81,10 @@ def detect_and_handle_duplicates(folder_index, rename_mode='dry_run'):
                     # Keep first occurrence as-is
                     continue
                 
-                old_path = Path(location['full_path'])
+                # Resolve absolute path for renaming
+                old_path = Path(root_dir) / location['full_path'] if root_dir else Path(location['full_path'])
                 stem = old_path.stem
+                suffix = old_path.suffix
                 suffix = old_path.suffix
                 
                 # Create new filename with number
@@ -241,11 +243,9 @@ def main():
     # Step 2: Organize by folder
     print("Step 2: Organizing by folder...")
     folder_index = organize_by_folder(png_files, workspace_root)
-    print(f"  ✓ Organized into {len(folder_index)} folders\n")
-    
     # Step 3: Detect duplicates (dry run first)
     print("Step 3: Detecting duplicate filenames...")
-    duplicates, _ = detect_and_handle_duplicates(folder_index, rename_mode='dry_run')
+    duplicates, _ = detect_and_handle_duplicates(folder_index, rename_mode='dry_run', root_dir=workspace_root)
     
     if duplicates:
         print(f"  ⚠️  Found {len(duplicates)} duplicate filenames:\n")
@@ -260,7 +260,7 @@ def main():
         
         rename_operations = []
         if response in ['yes', 'y']:
-            duplicates, rename_operations = detect_and_handle_duplicates(folder_index, rename_mode='rename')
+            duplicates, rename_operations = detect_and_handle_duplicates(folder_index, rename_mode='rename', root_dir=workspace_root)
             # Re-scan after renaming
             png_files = find_all_png_files(workspace_root)
             folder_index = organize_by_folder(png_files, workspace_root)
@@ -268,6 +268,8 @@ def main():
         else:
             print("\n  ℹ️  Skipping rename operation\n")
     else:
+        print("  ✓ No duplicate filenames found\n")
+        rename_operations = []
         print("  ✓ No duplicate filenames found\n")
         rename_operations = []
     

@@ -1,37 +1,12 @@
 ================================================================================
 CHART IMAGE INDEX
-Generated: /Users/shreyansh/FINAL_CHARTS
+Generated: /Users/shreyansh/OSMECON
 ================================================================================
 
 📊 SUMMARY
   Total PNG files: 26
   Total folders: 9
-  Duplicate filenames: 5
-
-================================================================================
-
-⚠️  DUPLICATE FILENAMES
---------------------------------------------------------------------------------
-
-📄 chart_1_1. Consanguineous marriages (between relatives) sh.png (found in 2 locations):
-  • E
-  • E/Grouped1,2,3
-
-📄 chart_2_2. Genetic testing before marriage should be made .png (found in 2 locations):
-  • E
-  • E/Grouped1,2,3
-
-📄 chart_3_3.If I knew about the health risks I would advise.png (found in 2 locations):
-  • E
-  • E/Grouped1,2,3
-
-📄 chart_4_4.In my community it is acceptable for a couple t.png (found in 2 locations):
-  • E
-  • E/Grouped1,2,3
-
-📄 chart_5_5. Do you agree that there is a general preference.png (found in 2 locations):
-  • E
-  • E/Grouped1,2,3
+  Duplicate filenames: 0
 
 ================================================================================
 
