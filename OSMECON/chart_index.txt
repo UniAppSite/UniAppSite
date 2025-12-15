@@ -1,0 +1,93 @@
+================================================================================
+CHART IMAGE INDEX
+Generated: /Users/shreyansh/FINAL_CHARTS
+================================================================================
+
+📊 SUMMARY
+  Total PNG files: 26
+  Total folders: 9
+  Duplicate filenames: 5
+
+================================================================================
+
+⚠️  DUPLICATE FILENAMES
+--------------------------------------------------------------------------------
+
+📄 chart_1_1. Consanguineous marriages (between relatives) sh.png (found in 2 locations):
+  • E
+  • E/Grouped1,2,3
+
+📄 chart_2_2. Genetic testing before marriage should be made .png (found in 2 locations):
+  • E
+  • E/Grouped1,2,3
+
+📄 chart_3_3.If I knew about the health risks I would advise.png (found in 2 locations):
+  • E
+  • E/Grouped1,2,3
+
+📄 chart_4_4.In my community it is acceptable for a couple t.png (found in 2 locations):
+  • E
+  • E/Grouped1,2,3
+
+📄 chart_5_5. Do you agree that there is a general preference.png (found in 2 locations):
+  • E
+  • E/Grouped1,2,3
+
+================================================================================
+
+📁 FOLDER INDEX
+--------------------------------------------------------------------------------
+
+
+📂 B/ (1 files)
+--------------------------------------------------------------------------------
+  • consanguineous_marriage_piechart.png
+
+📂 D/ (8 files)
+--------------------------------------------------------------------------------
+  • Q1_1__Before_the_diagnosis_of_your_family_member__wer.png
+  • Q2_2__Where_did_you_hear_about_them.png
+  • Q3_3__Do_you_know_that_these_are_hereditary_and_disea.png
+  • Q4_4__Are_you_aware_that_marriages_between_close_rela.png
+  • Q5_5__Are_you_aware_that_antenatal_screening_is_avail.png
+  • Q6_6__Have_you_ever_undergone_a_screening_test_for_th.png
+  • Q7_If_Yes__Who_advised_you_to_get_the_test.png
+  • Q8_7__Do_you_think_there_is_enough_public_awareness_a.png
+
+📂 DegreeVsConsag/ (1 files)
+--------------------------------------------------------------------------------
+  • Figure_1.png
+
+📂 DegreeVsDisease/ (1 files)
+--------------------------------------------------------------------------------
+  • Disease_vs_Degree_Chart.png
+
+📂 E/ (5 files)
+--------------------------------------------------------------------------------
+  • chart_1_1. Consanguineous marriages (between relatives) sh.png
+  • chart_2_2. Genetic testing before marriage should be made .png
+  • chart_3_3.If I knew about the health risks I would advise.png
+  • chart_4_4.In my community it is acceptable for a couple t.png
+  • chart_5_5. Do you agree that there is a general preference.png
+
+📂 E/Grouped1,2,3/ (5 files)
+--------------------------------------------------------------------------------
+  • chart_1_1. Consanguineous marriages (between relatives) sh_1.png
+  • chart_2_2. Genetic testing before marriage should be made _1.png
+  • chart_3_3.If I knew about the health risks I would advise_1.png
+  • chart_4_4.In my community it is acceptable for a couple t_1.png
+  • chart_5_5. Do you agree that there is a general preference_1.png
+
+📂 ReligionVsConsag/ (1 files)
+--------------------------------------------------------------------------------
+  • Religion_vs_Consanguinity_Chart.png
+
+📂 TypeOfDiseases/ (3 files)
+--------------------------------------------------------------------------------
+  • ConsagBasedDisease.png
+  • disease_types_comparison.png
+  • disease_vs_degree_comparison.png
+
+📂 WhyPrefer/ (1 files)
+--------------------------------------------------------------------------------
+  • why_prefer_piechart.png

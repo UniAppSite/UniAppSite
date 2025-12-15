@@ -1,0 +1,210 @@
+{
+  "summary": {
+    "total_files": 26,
+    "total_folders": 9,
+    "duplicate_count": 5
+  },
+  "duplicates": {
+    "chart_3_3.If I knew about the health risks I would advise.png": [
+      {
+        "folder": "E",
+        "path": "/Users/shreyansh/FINAL_CHARTS/E/chart_3_3.If I knew about the health risks I would advise.png"
+      },
+      {
+        "folder": "E/Grouped1,2,3",
+        "path": "/Users/shreyansh/FINAL_CHARTS/E/Grouped1,2,3/chart_3_3.If I knew about the health risks I would advise.png"
+      }
+    ],
+    "chart_5_5. Do you agree that there is a general preference.png": [
+      {
+        "folder": "E",
+        "path": "/Users/shreyansh/FINAL_CHARTS/E/chart_5_5. Do you agree that there is a general preference.png"
+      },
+      {
+        "folder": "E/Grouped1,2,3",
+        "path": "/Users/shreyansh/FINAL_CHARTS/E/Grouped1,2,3/chart_5_5. Do you agree that there is a general preference.png"
+      }
+    ],
+    "chart_1_1. Consanguineous marriages (between relatives) sh.png": [
+      {
+        "folder": "E",
+        "path": "/Users/shreyansh/FINAL_CHARTS/E/chart_1_1. Consanguineous marriages (between relatives) sh.png"
+      },
+      {
+        "folder": "E/Grouped1,2,3",
+        "path": "/Users/shreyansh/FINAL_CHARTS/E/Grouped1,2,3/chart_1_1. Consanguineous marriages (between relatives) sh.png"
+      }
+    ],
+    "chart_4_4.In my community it is acceptable for a couple t.png": [
+      {
+        "folder": "E",
+        "path": "/Users/shreyansh/FINAL_CHARTS/E/chart_4_4.In my community it is acceptable for a couple t.png"
+      },
+      {
+        "folder": "E/Grouped1,2,3",
+        "path": "/Users/shreyansh/FINAL_CHARTS/E/Grouped1,2,3/chart_4_4.In my community it is acceptable for a couple t.png"
+      }
+    ],
+    "chart_2_2. Genetic testing before marriage should be made .png": [
+      {
+        "folder": "E",
+        "path": "/Users/shreyansh/FINAL_CHARTS/E/chart_2_2. Genetic testing before marriage should be made .png"
+      },
+      {
+        "folder": "E/Grouped1,2,3",
+        "path": "/Users/shreyansh/FINAL_CHARTS/E/Grouped1,2,3/chart_2_2. Genetic testing before marriage should be made .png"
+      }
+    ]
+  },
+  "folders": {
+    "DegreeVsConsag": [
+      {
+        "filename": "Figure_1.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/DegreeVsConsag/Figure_1.png"
+      }
+    ],
+    "WhyPrefer": [
+      {
+        "filename": "why_prefer_piechart.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/WhyPrefer/why_prefer_piechart.png"
+      }
+    ],
+    "ReligionVsConsag": [
+      {
+        "filename": "Religion_vs_Consanguinity_Chart.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/ReligionVsConsag/Religion_vs_Consanguinity_Chart.png"
+      }
+    ],
+    "DegreeVsDisease": [
+      {
+        "filename": "Disease_vs_Degree_Chart.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/DegreeVsDisease/Disease_vs_Degree_Chart.png"
+      }
+    ],
+    "TypeOfDiseases": [
+      {
+        "filename": "disease_types_comparison.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/TypeOfDiseases/disease_types_comparison.png"
+      },
+      {
+        "filename": "ConsagBasedDisease.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/TypeOfDiseases/ConsagBasedDisease.png"
+      },
+      {
+        "filename": "disease_vs_degree_comparison.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/TypeOfDiseases/disease_vs_degree_comparison.png"
+      }
+    ],
+    "D": [
+      {
+        "filename": "Q7_If_Yes__Who_advised_you_to_get_the_test.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/D/Q7_If_Yes__Who_advised_you_to_get_the_test.png"
+      },
+      {
+        "filename": "Q1_1__Before_the_diagnosis_of_your_family_member__wer.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/D/Q1_1__Before_the_diagnosis_of_your_family_member__wer.png"
+      },
+      {
+        "filename": "Q8_7__Do_you_think_there_is_enough_public_awareness_a.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/D/Q8_7__Do_you_think_there_is_enough_public_awareness_a.png"
+      },
+      {
+        "filename": "Q5_5__Are_you_aware_that_antenatal_screening_is_avail.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/D/Q5_5__Are_you_aware_that_antenatal_screening_is_avail.png"
+      },
+      {
+        "filename": "Q4_4__Are_you_aware_that_marriages_between_close_rela.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/D/Q4_4__Are_you_aware_that_marriages_between_close_rela.png"
+      },
+      {
+        "filename": "Q6_6__Have_you_ever_undergone_a_screening_test_for_th.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/D/Q6_6__Have_you_ever_undergone_a_screening_test_for_th.png"
+      },
+      {
+        "filename": "Q2_2__Where_did_you_hear_about_them.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/D/Q2_2__Where_did_you_hear_about_them.png"
+      },
+      {
+        "filename": "Q3_3__Do_you_know_that_these_are_hereditary_and_disea.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/D/Q3_3__Do_you_know_that_these_are_hereditary_and_disea.png"
+      }
+    ],
+    "E": [
+      {
+        "filename": "chart_3_3.If I knew about the health risks I would advise.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/E/chart_3_3.If I knew about the health risks I would advise.png"
+      },
+      {
+        "filename": "chart_5_5. Do you agree that there is a general preference.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/E/chart_5_5. Do you agree that there is a general preference.png"
+      },
+      {
+        "filename": "chart_1_1. Consanguineous marriages (between relatives) sh.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/E/chart_1_1. Consanguineous marriages (between relatives) sh.png"
+      },
+      {
+        "filename": "chart_4_4.In my community it is acceptable for a couple t.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/E/chart_4_4.In my community it is acceptable for a couple t.png"
+      },
+      {
+        "filename": "chart_2_2. Genetic testing before marriage should be made .png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/E/chart_2_2. Genetic testing before marriage should be made .png"
+      }
+    ],
+    "B": [
+      {
+        "filename": "consanguineous_marriage_piechart.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/B/consanguineous_marriage_piechart.png"
+      }
+    ],
+    "E/Grouped1,2,3": [
+      {
+        "filename": "chart_5_5. Do you agree that there is a general preference_1.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/E/Grouped1,2,3/chart_5_5. Do you agree that there is a general preference_1.png"
+      },
+      {
+        "filename": "chart_1_1. Consanguineous marriages (between relatives) sh_1.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/E/Grouped1,2,3/chart_1_1. Consanguineous marriages (between relatives) sh_1.png"
+      },
+      {
+        "filename": "chart_2_2. Genetic testing before marriage should be made _1.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/E/Grouped1,2,3/chart_2_2. Genetic testing before marriage should be made _1.png"
+      },
+      {
+        "filename": "chart_4_4.In my community it is acceptable for a couple t_1.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/E/Grouped1,2,3/chart_4_4.In my community it is acceptable for a couple t_1.png"
+      },
+      {
+        "filename": "chart_3_3.If I knew about the health risks I would advise_1.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/E/Grouped1,2,3/chart_3_3.If I knew about the health risks I would advise_1.png"
+      }
+    ]
+  },
+  "rename_operations": [
+    {
+      "old_path": "/Users/shreyansh/FINAL_CHARTS/E/Grouped1,2,3/chart_3_3.If I knew about the health risks I would advise.png",
+      "new_path": "/Users/shreyansh/FINAL_CHARTS/E/Grouped1,2,3/chart_3_3.If I knew about the health risks I would advise_1.png",
+      "status": "success"
+    },
+    {
+      "old_path": "/Users/shreyansh/FINAL_CHARTS/E/Grouped1,2,3/chart_5_5. Do you agree that there is a general preference.png",
+      "new_path": "/Users/shreyansh/FINAL_CHARTS/E/Grouped1,2,3/chart_5_5. Do you agree that there is a general preference_1.png",
+      "status": "success"
+    },
+    {
+      "old_path": "/Users/shreyansh/FINAL_CHARTS/E/Grouped1,2,3/chart_1_1. Consanguineous marriages (between relatives) sh.png",
+      "new_path": "/Users/shreyansh/FINAL_CHARTS/E/Grouped1,2,3/chart_1_1. Consanguineous marriages (between relatives) sh_1.png",
+      "status": "success"
+    },
+    {
+      "old_path": "/Users/shreyansh/FINAL_CHARTS/E/Grouped1,2,3/chart_4_4.In my community it is acceptable for a couple t.png",
+      "new_path": "/Users/shreyansh/FINAL_CHARTS/E/Grouped1,2,3/chart_4_4.In my community it is acceptable for a couple t_1.png",
+      "status": "success"
+    },
+    {
+      "old_path": "/Users/shreyansh/FINAL_CHARTS/E/Grouped1,2,3/chart_2_2. Genetic testing before marriage should be made .png",
+      "new_path": "/Users/shreyansh/FINAL_CHARTS/E/Grouped1,2,3/chart_2_2. Genetic testing before marriage should be made _1.png",
+      "status": "success"
+    }
+  ]
+}

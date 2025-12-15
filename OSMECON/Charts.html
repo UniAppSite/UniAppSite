@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chart Viewer - Image Index</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #0d1117;
+            color: #c9d1d9;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: #161b22;
+            border-bottom: 1px solid #30363d;
+            padding: 20px 0;
+            margin-bottom: 30px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #58a6ff;
+        }
+
+        .stats {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            background: #21262d;
+            padding: 10px 20px;
+            border-radius: 6px;
+            border: 1px solid #30363d;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: #8b949e;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #58a6ff;
+        }
+
+        .search-box {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 45px 12px 20px;
+            font-size: 1rem;
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            color: #c9d1d9;
+            transition: border-color 0.2s;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #58a6ff;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #8b949e;
+        }
+
+        .filters {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-label {
+            color: #8b949e;
+            font-size: 0.9rem;
+        }
+
+        .filter-select {
+            padding: 8px 12px;
+            background: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            color: #c9d1d9;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: #58a6ff;
+        }
+
+        .folder-section {
+            margin-bottom: 40px;
+            background: #161b22;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+            overflow: hidden;
+        }
+
+        .folder-header {
+            background: #21262d;
+            padding: 15px 20px;
+            border-bottom: 1px solid #30363d;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s;
+        }
+
+        .folder-header:hover {
+            background: #2d333b;
+        }
+
+        .folder-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #58a6ff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .folder-count {
+            background: #238636;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+
+        .toggle-icon {
+            transition: transform 0.3s;
+        }
+
+        .folder-section.collapsed .toggle-icon {
+            transform: rotate(-90deg);
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .folder-section.collapsed .charts-grid {
+            display: none;
+        }
+
+        .chart-card {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.2s, border-color 0.2s;
+            cursor: pointer;
+        }
+
+        .chart-card:hover {
+            transform: translateY(-2px);
+            border-color: #58a6ff;
+        }
+
+        .chart-image-container {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            background: #21262d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chart-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s;
+        }
+
+        .chart-card:hover .chart-image {
+            transform: scale(1.05);
+        }
+
+        .chart-info {
+            padding: 12px;
+        }
+
+        .chart-name {
+            font-size: 0.9rem;
+            color: #c9d1d9;
+            word-break: break-word;
+            margin-bottom: 5px;
+        }
+
+        .chart-path {
+            font-size: 0.75rem;
+            color: #8b949e;
+            font-family: monospace;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: #8b949e;
+            font-size: 1.1rem;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .modal-image {
+            max-width: 100%;
+            max-height: 85vh;
+            object-fit: contain;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: #21262d;
+            border: none;
+            color: #c9d1d9;
+            font-size: 1.5rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-close:hover {
+            background: #2d333b;
+        }
+
+        .modal-info {
+            margin-top: 10px;
+            text-align: center;
+            color: #c9d1d9;
+            background: #161b22;
+            padding: 10px;
+            border-radius: 6px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #8b949e;
+        }
+
+        .duplicate-badge {
+            display: inline-block;
+            background: #da3633;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            margin-left: 8px;
+        }
+
+        .expand-collapse-all {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            background: #21262d;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            color: #c9d1d9;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.2s;
+        }
+
+        .btn:hover {
+            background: #2d333b;
+        }
+
+        @media (max-width: 768px) {
+            .charts-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>📊 Chart Viewer</h1>
+            <div class="stats" id="stats">
+                <div class="stat-item">
+                    <div class="stat-label">Total Charts</div>
+                    <div class="stat-value" id="totalCharts">-</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Folders</div>
+                    <div class="stat-value" id="totalFolders">-</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Duplicates</div>
+                    <div class="stat-value" id="duplicateCount">-</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Visible</div>
+                    <div class="stat-value" id="visibleCount">-</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="search-box">
+            <input 
+                type="text" 
+                class="search-input" 
+                id="searchInput" 
+                placeholder="Search charts by name or folder..."
+            >
+            <span class="search-icon">🔍</span>
+        </div>
+
+        <div class="filters">
+            <span class="filter-label">Filter by folder:</span>
+            <select class="filter-select" id="folderFilter">
+                <option value="">All Folders</option>
+            </select>
+        </div>
+
+        <div class="expand-collapse-all">
+            <button class="btn" id="expandAll">Expand All</button>
+            <button class="btn" id="collapseAll">Collapse All</button>
+        </div>
+
+        <div id="chartsContainer" class="loading">
+            Loading charts...
+        </div>
+    </div>
+
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">✕</button>
+            <img class="modal-image" id="modalImage" src="" alt="">
+            <div class="modal-info" id="modalInfo"></div>
+        </div>
+    </div>
+
+    <script>
+        let chartData = null;
+        let duplicateNames = new Set();
+
+        // Load JSON data
+        async function loadChartData() {
+            try {
+                // Embedded JSON data (no CORS issues)
+                chartData = {
+  "summary": {
+    "total_files": 26,
+    "total_folders": 9,
+    "duplicate_count": 5
+  },
+  "duplicates": {
+    "chart_3_3.If I knew about the health risks I would advise.png": [
+      {
+        "folder": "E",
+        "path": "/Users/shreyansh/FINAL_CHARTS/E/chart_3_3.If I knew about the health risks I would advise.png"
+      },
+      {
+        "folder": "E/Grouped1,2,3",
+        "path": "/Users/shreyansh/FINAL_CHARTS/E/Grouped1,2,3/chart_3_3.If I knew about the health risks I would advise.png"
+      }
+    ],
+    "chart_5_5. Do you agree that there is a general preference.png": [
+      {
+        "folder": "E",
+        "path": "/Users/shreyansh/FINAL_CHARTS/E/chart_5_5. Do you agree that there is a general preference.png"
+      },
+      {
+        "folder": "E/Grouped1,2,3",
+        "path": "/Users/shreyansh/FINAL_CHARTS/E/Grouped1,2,3/chart_5_5. Do you agree that there is a general preference.png"
+      }
+    ],
+    "chart_1_1. Consanguineous marriages (between relatives) sh.png": [
+      {
+        "folder": "E",
+        "path": "/Users/shreyansh/FINAL_CHARTS/E/chart_1_1. Consanguineous marriages (between relatives) sh.png"
+      },
+      {
+        "folder": "E/Grouped1,2,3",
+        "path": "/Users/shreyansh/FINAL_CHARTS/E/Grouped1,2,3/chart_1_1. Consanguineous marriages (between relatives) sh.png"
+      }
+    ],
+    "chart_4_4.In my community it is acceptable for a couple t.png": [
+      {
+        "folder": "E",
+        "path": "/Users/shreyansh/FINAL_CHARTS/E/chart_4_4.In my community it is acceptable for a couple t.png"
+      },
+      {
+        "folder": "E/Grouped1,2,3",
+        "path": "/Users/shreyansh/FINAL_CHARTS/E/Grouped1,2,3/chart_4_4.In my community it is acceptable for a couple t.png"
+      }
+    ],
+    "chart_2_2. Genetic testing before marriage should be made .png": [
+      {
+        "folder": "E",
+        "path": "/Users/shreyansh/FINAL_CHARTS/E/chart_2_2. Genetic testing before marriage should be made .png"
+      },
+      {
+        "folder": "E/Grouped1,2,3",
+        "path": "/Users/shreyansh/FINAL_CHARTS/E/Grouped1,2,3/chart_2_2. Genetic testing before marriage should be made .png"
+      }
+    ]
+  },
+  "folders": {
+    "DegreeVsConsag": [
+      {
+        "filename": "Figure_1.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/DegreeVsConsag/Figure_1.png"
+      }
+    ],
+    "WhyPrefer": [
+      {
+        "filename": "why_prefer_piechart.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/WhyPrefer/why_prefer_piechart.png"
+      }
+    ],
+    "ReligionVsConsag": [
+      {
+        "filename": "Religion_vs_Consanguinity_Chart.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/ReligionVsConsag/Religion_vs_Consanguinity_Chart.png"
+      }
+    ],
+    "DegreeVsDisease": [
+      {
+        "filename": "Disease_vs_Degree_Chart.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/DegreeVsDisease/Disease_vs_Degree_Chart.png"
+      }
+    ],
+    "TypeOfDiseases": [
+      {
+        "filename": "disease_types_comparison.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/TypeOfDiseases/disease_types_comparison.png"
+      },
+      {
+        "filename": "ConsagBasedDisease.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/TypeOfDiseases/ConsagBasedDisease.png"
+      },
+      {
+        "filename": "disease_vs_degree_comparison.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/TypeOfDiseases/disease_vs_degree_comparison.png"
+      }
+    ],
+    "D": [
+      {
+        "filename": "Q7_If_Yes__Who_advised_you_to_get_the_test.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/D/Q7_If_Yes__Who_advised_you_to_get_the_test.png"
+      },
+      {
+        "filename": "Q1_1__Before_the_diagnosis_of_your_family_member__wer.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/D/Q1_1__Before_the_diagnosis_of_your_family_member__wer.png"
+      },
+      {
+        "filename": "Q8_7__Do_you_think_there_is_enough_public_awareness_a.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/D/Q8_7__Do_you_think_there_is_enough_public_awareness_a.png"
+      },
+      {
+        "filename": "Q5_5__Are_you_aware_that_antenatal_screening_is_avail.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/D/Q5_5__Are_you_aware_that_antenatal_screening_is_avail.png"
+      },
+      {
+        "filename": "Q4_4__Are_you_aware_that_marriages_between_close_rela.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/D/Q4_4__Are_you_aware_that_marriages_between_close_rela.png"
+      },
+      {
+        "filename": "Q6_6__Have_you_ever_undergone_a_screening_test_for_th.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/D/Q6_6__Have_you_ever_undergone_a_screening_test_for_th.png"
+      },
+      {
+        "filename": "Q2_2__Where_did_you_hear_about_them.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/D/Q2_2__Where_did_you_hear_about_them.png"
+      },
+      {
+        "filename": "Q3_3__Do_you_know_that_these_are_hereditary_and_disea.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/D/Q3_3__Do_you_know_that_these_are_hereditary_and_disea.png"
+      }
+    ],
+    "E": [
+      {
+        "filename": "chart_3_3.If I knew about the health risks I would advise.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/E/chart_3_3.If I knew about the health risks I would advise.png"
+      },
+      {
+        "filename": "chart_5_5. Do you agree that there is a general preference.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/E/chart_5_5. Do you agree that there is a general preference.png"
+      },
+      {
+        "filename": "chart_1_1. Consanguineous marriages (between relatives) sh.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/E/chart_1_1. Consanguineous marriages (between relatives) sh.png"
+      },
+      {
+        "filename": "chart_4_4.In my community it is acceptable for a couple t.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/E/chart_4_4.In my community it is acceptable for a couple t.png"
+      },
+      {
+        "filename": "chart_2_2. Genetic testing before marriage should be made .png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/E/chart_2_2. Genetic testing before marriage should be made .png"
+      }
+    ],
+    "B": [
+      {
+        "filename": "consanguineous_marriage_piechart.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/B/consanguineous_marriage_piechart.png"
+      }
+    ],
+    "E/Grouped1,2,3": [
+      {
+        "filename": "chart_5_5. Do you agree that there is a general preference_1.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/E/Grouped1,2,3/chart_5_5. Do you agree that there is a general preference_1.png"
+      },
+      {
+        "filename": "chart_1_1. Consanguineous marriages (between relatives) sh_1.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/E/Grouped1,2,3/chart_1_1. Consanguineous marriages (between relatives) sh_1.png"
+      },
+      {
+        "filename": "chart_2_2. Genetic testing before marriage should be made _1.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/E/Grouped1,2,3/chart_2_2. Genetic testing before marriage should be made _1.png"
+      },
+      {
+        "filename": "chart_4_4.In my community it is acceptable for a couple t_1.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/E/Grouped1,2,3/chart_4_4.In my community it is acceptable for a couple t_1.png"
+      },
+      {
+        "filename": "chart_3_3.If I knew about the health risks I would advise_1.png",
+        "path": "/Users/shreyansh/FINAL_CHARTS/E/Grouped1,2,3/chart_3_3.If I knew about the health risks I would advise_1.png"
+      }
+    ]
+  },
+  "rename_operations": [
+    {
+      "old_path": "/Users/shreyansh/FINAL_CHARTS/E/Grouped1,2,3/chart_3_3.If I knew about the health risks I would advise.png",
+      "new_path": "/Users/shreyansh/FINAL_CHARTS/E/Grouped1,2,3/chart_3_3.If I knew about the health risks I would advise_1.png",
+      "status": "success"
+    },
+    {
+      "old_path": "/Users/shreyansh/FINAL_CHARTS/E/Grouped1,2,3/chart_5_5. Do you agree that there is a general preference.png",
+      "new_path": "/Users/shreyansh/FINAL_CHARTS/E/Grouped1,2,3/chart_5_5. Do you agree that there is a general preference_1.png",
+      "status": "success"
+    },
+    {
+      "old_path": "/Users/shreyansh/FINAL_CHARTS/E/Grouped1,2,3/chart_1_1. Consanguineous marriages (between relatives) sh.png",
+      "new_path": "/Users/shreyansh/FINAL_CHARTS/E/Grouped1,2,3/chart_1_1. Consanguineous marriages (between relatives) sh_1.png",
+      "status": "success"
+    },
+    {
+      "old_path": "/Users/shreyansh/FINAL_CHARTS/E/Grouped1,2,3/chart_4_4.In my community it is acceptable for a couple t.png",
+      "new_path": "/Users/shreyansh/FINAL_CHARTS/E/Grouped1,2,3/chart_4_4.In my community it is acceptable for a couple t_1.png",
+      "status": "success"
+    },
+    {
+      "old_path": "/Users/shreyansh/FINAL_CHARTS/E/Grouped1,2,3/chart_2_2. Genetic testing before marriage should be made .png",
+      "new_path": "/Users/shreyansh/FINAL_CHARTS/E/Grouped1,2,3/chart_2_2. Genetic testing before marriage should be made _1.png",
+      "status": "success"
+    }
+  ]
+}
+                
+                // Build duplicate names set
+                Object.keys(chartData.duplicates || {}).forEach(name => {
+                    duplicateNames.add(name);
+                });
+
+                updateStats();
+                populateFolderFilter();
+                renderCharts();
+            } catch (error) {
+                document.getElementById('chartsContainer').innerHTML = 
+                    '<div class="no-results">Error loading chart data. Make sure chart_index.json exists in the same directory.</div>';
+                console.error('Error loading chart data:', error);
+            }
+        }
+
+        // Update statistics
+        function updateStats() {
+            document.getElementById('totalCharts').textContent = chartData.summary.total_files;
+            document.getElementById('totalFolders').textContent = chartData.summary.total_folders;
+            document.getElementById('duplicateCount').textContent = chartData.summary.duplicate_count;
+            document.getElementById('visibleCount').textContent = chartData.summary.total_files;
+        }
+
+        // Populate folder filter dropdown
+        function populateFolderFilter() {
+            const folderFilter = document.getElementById('folderFilter');
+            const folders = Object.keys(chartData.folders).sort();
+            
+            folders.forEach(folder => {
+                const option = document.createElement('option');
+                option.value = folder;
+                option.textContent = folder;
+                folderFilter.appendChild(option);
+            });
+        }
+
+        // Render charts
+        function renderCharts(searchTerm = '', folderFilter = '') {
+            const container = document.getElementById('chartsContainer');
+            container.innerHTML = '';
+
+            let visibleCount = 0;
+            let matchedFolders = 0;
+
+            Object.entries(chartData.folders).forEach(([folder, charts]) => {
+                // Apply folder filter
+                if (folderFilter && folder !== folderFilter) {
+                    return;
+                }
+
+                // Filter charts by search term
+                const filteredCharts = charts.filter(chart => {
+                    const searchLower = searchTerm.toLowerCase();
+                    return chart.filename.toLowerCase().includes(searchLower) ||
+                           folder.toLowerCase().includes(searchLower);
+                });
+
+                if (filteredCharts.length === 0) {
+                    return;
+                }
+
+                matchedFolders++;
+                visibleCount += filteredCharts.length;
+
+                // Create folder section
+                const folderSection = document.createElement('div');
+                folderSection.className = 'folder-section';
+
+                const folderHeader = document.createElement('div');
+                folderHeader.className = 'folder-header';
+                folderHeader.innerHTML = `
+                    <div class="folder-name">
+                        📁 ${folder}
+                        <span class="folder-count">${filteredCharts.length}</span>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                `;
+
+                const chartsGrid = document.createElement('div');
+                chartsGrid.className = 'charts-grid';
+
+                filteredCharts.forEach(chart => {
+                    const isDuplicate = duplicateNames.has(chart.filename);
+                    
+                    const chartCard = document.createElement('div');
+                    chartCard.className = 'chart-card';
+                    chartCard.innerHTML = `
+                        <div class="chart-image-container">
+                            <img class="chart-image" src="${chart.path}" alt="${chart.filename}" loading="lazy">
+                        </div>
+                        <div class="chart-info">
+                            <div class="chart-name">
+                                ${chart.filename}
+                                ${isDuplicate ? '<span class="duplicate-badge">DUPLICATE</span>' : ''}
+                            </div>
+                            <div class="chart-path">${folder}</div>
+                        </div>
+                    `;
+
+                    chartCard.addEventListener('click', () => {
+                        openModal(chart.path, chart.filename, folder);
+                    });
+
+                    chartsGrid.appendChild(chartCard);
+                });
+
+                folderHeader.addEventListener('click', () => {
+                    folderSection.classList.toggle('collapsed');
+                });
+
+                folderSection.appendChild(folderHeader);
+                folderSection.appendChild(chartsGrid);
+                container.appendChild(folderSection);
+            });
+
+            // Update visible count
+            document.getElementById('visibleCount').textContent = visibleCount;
+
+            // Show no results message
+            if (matchedFolders === 0) {
+                container.innerHTML = '<div class="no-results">No charts found matching your search.</div>';
+            }
+        }
+
+        // Modal functions
+        function openModal(imagePath, filename, folder) {
+            const modal = document.getElementById('modal');
+            const modalImage = document.getElementById('modalImage');
+            const modalInfo = document.getElementById('modalInfo');
+
+            modalImage.src = imagePath;
+            modalInfo.innerHTML = `
+                <strong>${filename}</strong><br>
+                <span style="color: #8b949e;">${folder}</span>
+            `;
+
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.classList.remove('active');
+        }
+
+        // Event listeners
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const searchTerm = e.target.value;
+            const folderFilter = document.getElementById('folderFilter').value;
+            renderCharts(searchTerm, folderFilter);
+        });
+
+        document.getElementById('folderFilter').addEventListener('change', (e) => {
+            const searchTerm = document.getElementById('searchInput').value;
+            const folderFilter = e.target.value;
+            renderCharts(searchTerm, folderFilter);
+        });
+
+        document.getElementById('modalClose').addEventListener('click', closeModal);
+        document.getElementById('modal').addEventListener('click', (e) => {
+            if (e.target.id === 'modal') {
+                closeModal();
+            }
+        });
+
+        document.getElementById('expandAll').addEventListener('click', () => {
+            document.querySelectorAll('.folder-section').forEach(section => {
+                section.classList.remove('collapsed');
+            });
+        });
+
+        document.getElementById('collapseAll').addEventListener('click', () => {
+            document.querySelectorAll('.folder-section').forEach(section => {
+                section.classList.add('collapsed');
+            });
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+            if (e.key === '/' && e.target.tagName !== 'INPUT') {
+                e.preventDefault();
+                document.getElementById('searchInput').focus();
+            }
+        });
+
+        // Initialize
+        loadChartData();
+    </script>
+</body>
+</html>
